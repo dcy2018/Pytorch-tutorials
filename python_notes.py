@@ -2,22 +2,21 @@
 #Filename:note.py
 import types
 #打印不换行
-'''
 def test(a,*b): 
  print (a,end='') 
  for i in b:
   print (i,end='')
 test(10,'c','v')
-'''
+
+
 #输入数字数组
-'''
 p=input('input some numbers:') #空格隔开的，比如3 4 1 2，会被读成
 '3 4 1 2'
 p=list(map(int,p.split(' '))) #先用空格分隔
 ，变成字符型数组，再用map整合成int型数组，python3里map返回的不是list，故需要再调整成list
-'''
+
+
 #序列操作
-'''
 num=[1,2,3,4,5,6,7,8,9,10]
 print(num[1:3]) #左开右闭，结果是[2,3]
 print(num[-3:-1]) #左索引不能晚于右索引，结果是[8,9]
@@ -32,9 +31,8 @@ tring.append(4) #末尾增加元素
 del tring[1] #删除指定位置元素
 print(len(tring)) #序列长度
 print(tring)
-'''
-'''
-boil=list('abcde') 序列化
+
+boil=list('abcde') #序列化
 boil[2:]=list('tttt') #分片赋值，结果是['a','b','t','t','t','t','t']
 boil[2:2]=list('in') #分片插入，结果是['a','b','i','n','t','t','t','t']
 boil[0:2]=[] #分片删除，结果是['i','n','t','t','t','t]
@@ -53,16 +51,14 @@ boil3=boil2.copy() #复制列表
 del boil[:] #清空列表
 boil2.clear() #清空列表
 print(boil2)
-'''
-'''
 num=[1,7,2,5,9]
 n=num[:] #分片复制，否则对n排序会影响num
 n.sort() #排序
 print(num) #[1,7,2,5,9]
 print(n) #[1,2,5,7,9]
-'''
+
+
 #字符串操作
-'''
 print('%010.2f'%3.12159) #0表示用0补齐
 print('%10.2f'%3.12159) #用空格补齐
 print('%+10.2f'%3.12159) #+表示加上正负号
@@ -89,9 +85,9 @@ outtable='123456'
 trantab=str.maketrans(intable,outtable) #生成替换表
 st='just do it'
 print(st.translate(trantab)) #按替换表一次性替换多个字符  
-'''
+
+
 #字典方法
-'''
 d1={'name':'Tom','age':12}
 list1=[('name','Tom'),('age',12)]
 d2=dict(list1) #元组列表转字典
@@ -122,10 +118,10 @@ d4={'aa':5,'nn':14}
 d3.update(d4) #用d4的内容对d3进行更新，没有的加入，键相同的覆盖旧值
 print (d3)
 v=d3.values() #返回字典的所有值，可遍历，可列表化，内容可重复
-'''
+
+
 #函数参数定义顺序必须是：必须参数，默认参数，可变参数、关键字参数
 #定义函数注意加':'
-'''
 def test(name,m1=7,m2=8,*p,**kw): #name是必须参数，m1,m2是默认参数，p代表可变参数,kw传入字典，是关键字参数
  print('name:',name,'m1:',m1,'m2:',m2,'p:',*p,'kw:',kw) #此处*p若改为p，则打印元组(1,2,'k')；kw若改为*kw则打印所有键
 test('mimi',5,6,1,2,'k',hometown='changsha',love='jerry') #字符串类型的键不用加引号
@@ -133,9 +129,9 @@ test('mimi',5,6,1,2,'k',hometown='changsha',love='jerry') #字符串类型的�
 tuple1=('mimi',5,6,1,2,'k')
 dict1={'hometown':'changsha','love':'jerry'}
 test(*tuple1,**dict1) #打印效果一样 
-'''
+
+
 #闭包
-'''
 #例一
 def test(*p):
  def cal():
@@ -147,8 +143,7 @@ def test(*p):
 print(test(1,2,3)) #打印函数
 cal=test(1,2,3)
 print(cal()) #打印值6
-'''
-'''
+
 #例二
 def line_conf(a,b):
  def line(x):
@@ -156,9 +151,9 @@ def line_conf(a,b):
  return line #line_conf函数返回一个函数，此处为一条直线一条直线
 line1=line_conf(2,3) #line1是2x+3，此时待指定x
 print(line1(4)) 输出11
-'''
+
+
 #递归函数&尾递归
-'''
 def fact(n):
  if n==1:
   return 1
@@ -171,8 +166,7 @@ def fact_item(num,product): #product记录中间结果
   return product
  return fact_item(num-1,num*product) #尾递归：最后返回函数，而非表达式
 print(fact2(5))
-'''
-'''
+
 #filter函数:filter(func,list)
 def func(x):
  return x>3
@@ -182,9 +176,9 @@ print([item for item in f_list])
 print([item for item in filter(lambda x:x>3,[1,2,3,4,5])])
 t=lambda x,y,z:x+y+z
 print(t(3,4,5))
-'''
+
+
 #类的定义与使用
-'''
 class student(object):
  def __init__(self,name,score,home):
   self.n=name
@@ -200,9 +194,8 @@ st1=student('Tim',97,'hongkong')
 st1.info()
 st1.set_home('changsha') #设置get_home方法后才能修改内部变量__h
 print('%s'%st1.get_home()) #直接用st1.__h会显示该类无__h变量
-'''
+
 #类的继承（可同时继承多个类，调用的方法按继承顺序搜索）
-'''
 class animal(object):
  def __init__(self):
   self.a=1
@@ -213,7 +206,7 @@ class animal(object):
   pass
  def info(self):
   print('%d %d'%(self.a,self.b))
-  
+
 class dog(animal):
  def __init__(self):
   self.a=3
@@ -225,25 +218,22 @@ dog1.run() #会调用子类的run而非基类的run
 dog1.info() #输出3 4
 #print(isinstance(dog1,dog)) #判断是否是某个类
 #print(dir(dog1)) #输出包含的类、属性等
-'''
+
 #多态
-'''
 def run2times(obj):
  obj.run()
  obj.run()
 run2times(animal()) #输出两次animal is running
 run2times(dog1) #输出两次dog is running
-'''
+
 #判断函数类型
-'''
 def func():
  pass
 print(type(func)==types.FunctionType) 
 print(type(abs)==types.BuiltinFunctionType)
 print(type(lambda x:x>3)==types.LambdaType)
-'''
+
 #类的专有方法
-'''
 class student(object):
  def __init__(self,name):
   self.n=name
@@ -276,11 +266,9 @@ class f2(object):
    
 fi=f2()
 print(fi[10])
-'''
 
 #@staticmethod（不需要表示自身对象的self和自身类的cls参数，就跟使用函数一样）
 #@classmethod（不需要self参数，但第一个参数需要是表示自身类的cls参数）
-'''
 class A(object):
     bar = 1
     def foo(self):
@@ -299,28 +287,11 @@ class A(object):
  
 A.static_foo()
 A.class_foo()
-'''
-
-#@装饰器
-'''
-def check_num(func):
-    strs = func()
-    if strs.isdigit():
-        print('输入为数字：{}...'.format(strs))
-    else:
-        print('输入不是数字：{}...'.format(strs))
- 
-@check_num
-def get_input():
-    strs = input('请输入：')
-    return strs
-'''
 
 
 #库的使用
 #numpy的使用
 import numpy as np
-'''
 a = np.array([[1,2,3], [4,5,6]])
 b = np.array([[1.,2.], [3.,4.], [5.,6.]])
 print('a.shape = ', a.shape, 'b.shape = ', b.shape)
@@ -328,6 +299,7 @@ print('a.dtype = ', a.dtype, 'b.dtype = ', b.dtype)
 #结果如下：
 # a.shape = (2, 3) b.shape = (3, 2)
 # a.dtype = int32 b.dtype = float64
+
 a=a.astype('float64') #改变数组元素类型
 b=b.reshape(2,3) #改变数组尺寸形状，reshape里可用-1替换某个参数，省去手动计算
 print('a.dtype= ', a.dtype)
@@ -335,6 +307,7 @@ print(b)
 #结果如下：
 #a.dtype = float64
 #b=array([[1,2,3],[4,5,6]])
+
 # 切片与索引
 a=np.array([[0,1,2,3],[4,5,6,7],[8,9,10,11],[12,13,14,15]])
 a=array([[ 0,  1,  2,  3],
@@ -352,6 +325,7 @@ b[b>3]==array([4,5]) #条件索引
 b[np.array([True,False,False,True,False,False])]==array([0,3]) #布尔索引
 mask=np.array([1,0,0,1,0,0],dtype=np.bool) #布尔索引
 a[mask]=array([0,3])
+
 #ufunc操作，即函数对数组里每一个元素都进行操作
 x=np.linspace(1,2*np.pi,3,endpoint=True)
 print('x=',x,'\n')
@@ -359,16 +333,19 @@ y=np.sin(x)
 print('y=',y,'\n')
 np.sin(x,x)
 print('x=',x,'\n')
+
 #数组比较
 x1=np.array([1,2,6])
 x2=np.array([2,3,5]) 
 print(x1<x2)  #[ True  True False]
 print(np.any(x1<x2)) #True
 print(np.all(x1<x2)) #False
+
 #矩阵点乘
 x1=np.array([[1,2,3],[4,5,6]])
 x2=np.array([[3,4],[5,6],[7,8]])
 print(np.dot(x1,x2)) 
+
 #以文件形式保存和加载array数组
 a=np.array([[1,2,3],[4,5,6]])
 np.save('a.npy',a)
@@ -376,8 +353,8 @@ c=np.load('a.npy')
  
 np.savetxt('a.txt',a)
 d=np.loadtxt('a.txt')
-'''
-'''
+
+
 #数据归一化，按列减去均值除以方差，每一列的均值归零，方差归一
 from sklearn import preprocessing
 x=np.array([[1.,-1.,2.],[2.,0.,0.],[0.,1.,-1.]])
@@ -385,15 +362,14 @@ x_scaled=preprocessing.scale(x)
 print(x_scaled)
 print(x_scaled.mean(axis=0))
 print(x_scaled.std(axis=0))
-'''
-'''
+
 [[ 0.         -1.22474487  1.33630621]
  [ 1.22474487  0.         -0.26726124]
  [-1.22474487  1.22474487 -1.06904497]]
 [0. 0. 0.]
 [1. 1. 1.]
-'''
-'''
+
+
 #主成分分析
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
@@ -417,13 +393,13 @@ for i in range(len(reduced_x)):
         green_x.append(reduced_x[i][0])
         green_y.append(reduced_x[i][1])
 plt.ylim(-3.0,3.0)
+
 #可视化
 plt.scatter(red_x,red_y,c='r',marker='x')
 plt.scatter(blue_x,blue_y,c='b',marker='D')
 plt.scatter(green_x,green_y,c='g',marker='.')
 plt.show()
-'''
-'''
+
 x=[[4,5],[0,1],[6,7],[2,3],[8,9]]
 y=[2,0,3,1,4]
 from sklearn.model_selection import train_test_split
@@ -432,9 +408,10 @@ print(x_train)
 print(y_train)
 print(x_test)
 print(y_test)
-'''
+
+
+
 #线性回归
-'''
 # 利用 diabetes数据集来学习线性回归
 # diabetes 是一个关于糖尿病的数据集， 该数据集包括442个病人的生理数据及一年以后的病情发展情况。 
 # 数据集中的特征值总共10项, 如下:
@@ -447,7 +424,7 @@ print(y_test)
     
 #关于数据集更多的信息: http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html
    # http://scikit-learn.org/stable/datasets/index.html#datasets
-   
+
 import numpy as np
 from sklearn import datasets
 diabetes=datasets.load_diabetes()
@@ -500,13 +477,11 @@ linreg.predict( x_test )
 # 方差: 统计中的方差（样本方差）是各个数据分别与其平均数之差的平方的和的平均数
 print(linreg.score( x_test,y_test))
  
- 
 #对每个特征绘制一个线性回归图表
 import matplotlib.pyplot as plt
 #matplot显示图例中的中文问题 :   https://www.zhihu.com/question/25404709/answer/67672003
 import matplotlib.font_manager as fm
 #mac中的字体问题请看: https://zhidao.baidu.com/question/161361596.html
- 
  
 plt.figure(  figsize=(8,12))
 #循环10个特征
@@ -533,9 +508,9 @@ for f in range(0,10):
     
 plt.savefig('python_糖尿病数据集_预测病情_线性回归_最小平方回归.png')
 plt.show()
-'''
+
+
 #爬虫
-'''
 from lxml import etree
 import requests
 import time
@@ -556,9 +531,9 @@ for a in range(10):
             print("{} {} {} {} {}".format(movies_name,movies_href,movies_score,movies_number,movie_scrible[0]))
         else:
             print("{} {} {} {}".format(movies_name,movies_href,movies_score,movies_number))
-'''
+
+	
 #用with处理异常
-'''
 class Test:
   def __enter__(self):
     print('__enter__() is call!')
@@ -576,83 +551,22 @@ class Test:
  
 with Test() as sample:
   sample.dosomething()
-'''
-
-#打印不换行
-'''
-def test(a,*b): 
- print (a,end='') 
- for i in b:
-  print (i,end='')
-test(10,'c','v')
-'''
-#序列操作
-'''
-num=[1,2,3,4,5,6,7,8,9,10]
-print(num[1:3]) #左开右闭，结果是[2,3]
-print(num[-3:-1]) #左索引不能晚于右索引，结果是[8,9]
-print(num[:])
-print(num[1:3:1])
-print(num[2:0:-1])
-print([1,2]+[3,4,5]) #序列相加，结果是[1,2,3,4,5]
-print('ab'+'gh') 
-print('ab'*5) #序列乘法
-tring=[None]*5 #序列初始化
-tring.append(4) #末尾增加元素
-del tring[1] #删除指定位置元素
-print(len(tring)) #序列长度
-print(tring)
-'''
-'''
-boil=list('abcde') #字符串序列化
-boil[2:]=list('tttt') #分片赋值，结果是['a','b','t','t','t','t','t']
-boil[2:2]=list('in') #分片插入，结果是['a','b','i','n','t','t','t','t']
-boil[0:2]=[] #分片删除，结果是['i','n','t','t','t','t]
-print(boil)
-print(boil.count('t')) #元素个数
-haha=[1,2,3]
-boil.extend(haha) #序列扩展
-print(boil) #序列相加后保存，结果是['i','n','t','t','t','t',1,2,3]
-print(boil.index('t')) #索引't'，结果是2
-boil.insert(2,'s') #插入元素，结果是['i','n','s','t','t','t','t',1,2,3]
-tmp=boil.pop(3) #弹出元素
-boil.remove(1) #删除第一个指定元素
-print(boil) #结果是['i','n','s','t','t','t',2,3]
-boil2=boil[:] #分片复制
-boil3=boil2.copy() #复制列表
-del boil[:] #清空列表
-boil2.clear() #清空列表
-print(boil2)
-'''
-'''
-num=[1,7,2,5,9]
-n=num[:] #分片复制，否则对n排序会影响num
-n.sort() #排序
-print(num) #[1,7,2,5,9]
-print(n) #[1,2,5,7,9]
-'''
 
 
-#字符串操作
-'''
-print('%010.2f'%3.12159) #0表示用0补齐
-print('%10.2f'%3.12159) #用空格补齐
-print('%+10.2f'%3.12159) #+表示加上正负号
-print('%-10.2f'%3.12159) #-表示对齐
-str='abcce' #查找字符串
-str.find(bc,0,4) #要找的子串，起始位置，结束位置；最后返回位置，-1表示没找到
-mark='++'
-new=mark.join(str) #用指定字符串连接另一字符串，结果是'a++b++c++c++e'
-srr2='12','e','ert'
-new2=mark.join(str2) #结果是'12++e++ert'
-field='DO IT NOW'
-field.lower().find('It'.lower()) #转换成小写
-field.upper().find('It'.upper()) #转换成大写
-field.swapcase() #大小写互换
-field.replace('O','xx',1) #将'O'替换成'xx‘，且不超过一次
-'''
 #装饰器
-'''
+def check_num(func):
+    strs = func()
+    if strs.isdigit():
+        print('输入为数字：{}...'.format(strs))
+    else:
+        print('输入不是数字：{}...'.format(strs))
+ 
+@check_num
+def get_input():
+    strs = input('请输入：')
+    return strs
+
+#装饰器
 import time
 def timeit(func):
     def wrapper(): ##内嵌函数，用于包装func
@@ -660,17 +574,15 @@ def timeit(func):
         func()
         end =time.clock()
         print ('used:', end - start)
-    return wrapper ##返回包装后的func
+    return wrapper ##返回包装后的func，返回一个添加了输出运行时间功能的func
  
 @timeit ##此处等价于timeit(foo())
 def foo():
     print ('some words')
-
 foo()
-'''
 
-'''
-def makebold(fn):
+#多层装饰器
+def makebold(fn):
     def wrapped():
         return ("<b>" + fn() + "</b>")
     return wrapped
@@ -683,9 +595,9 @@ def makeitalic(fn):
 def hello():
     return ("hello world")
 print (hello()) ## 返回 <b><i>hello world</i></b>
-'''
 
-'''
+
+
 #python命令行传参：
 #方法一：sys.argv
 #aa.py内容如下
@@ -707,7 +619,6 @@ aa.py
 #方法二：argparse
 #cc.py内容如下
 # -*- coding: utf-8 -*-
- 
 import argparse
  
 parser = argparse.ArgumentParser()
@@ -719,9 +630,8 @@ args = vars(parser.parse_args()) #vars将之变成字典
 print (args['integer'])
 print (args['string'])
 
-if __name__ == '__main__' :	
+if __name__ == '__main__' : #直接以python xx.py形式运行本文件时执行下面的语句，若本文件被imoort则不会执行
 	print(parser.parse_args())
-
 
 #命令行
 python cc.py -i 10 --string 'heihei'
@@ -729,7 +639,7 @@ python cc.py -i 10 --string 'heihei'
 #结果
 #10
 #'heihei'
-'''
+
 
 #import同文件夹下文件
 #aa.py内容如下：
@@ -787,6 +697,7 @@ print(lili[1])
 dd.hoho(50)
 dd.haha(30)
 
+
 #import同文件夹下子文件夹
 #需要在子文件夹中加入__inti__.py（内容空白即可）才能使用子文件夹中的文件
 
@@ -795,6 +706,7 @@ dd.haha(30)
 import sys, os
 base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(base_path)
+
 
 #获取当前路径
 import os
